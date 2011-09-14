@@ -1,0 +1,157 @@
+<!DOCTYPE>
+<html>
+
+	<head>
+		
+		<link rel="stylesheet" href="css/clock.css" type="text/css" media="screen" />
+		
+		<style type="text/css">
+
+		#round {
+			height:150px;
+			width:800px;
+			margin-left:-200px;
+			margin-bottom:70px;
+		}
+		
+		.button {
+			background-color:#222222;
+			overflow:hidden;
+			display:block;
+			height:60px;
+			width:60px;
+		}
+
+		.button span {
+			-webkit-transition-property:top, left, opacity;
+			-moz-transition-property:top, left, opacity;
+			-o-transition-property:top, left, opacity;
+			transition-property:top, left, opacity;
+	
+			-webkit-transition-duration:0ms, 0ms, 800ms;
+			-moz-transition-duration:0ms, 0ms, 800ms;
+			-o-transition-duration:0ms, 0ms, 800ms;
+			transition-duration:0ms, 0ms, 800ms;
+	
+			background:transparent no-repeat center;
+			text-indent:-9999px;
+			position:relative;
+			display:block;
+			opacity:0.5;
+			margin:0px;
+			height:60px;
+			width:60px;
+		}
+
+		.button.prev span:after, .button.next span:after {
+			background:transparent no-repeat center;
+			position:absolute;
+			display:block;
+			height:60px;
+			width:60px;
+			left:0px;
+			top:0px;
+			content:' ';
+		}
+	
+		.button:hover span {
+			-webkit-transition:400ms cubic-bezier(0.23, 1, 0.32, 1);
+			transition:400ms cubic-bezier(0.23, 1, 0.32, 1);
+			opacity:1;
+		}
+		
+		/* PREV BUTTON */
+		.button.prev { float:left; margin-right:1px; }
+		.button:hover.prev span { left:-60px; }
+		.button.prev span { background-image:url("img/arrow-prev.png"); }
+		.button.prev span:after { background-image:url("img/arrow-prev.png"); left:60px; }
+		
+		/* NEXT BUTTON */
+		.button:hover.next span { left:60px; }
+		.button.next span { background-image:url("img/arrow-next.gif"); }		
+		.button.next span:after { background-image:url("img/arrow-next.gif"); left:-60px; }
+		
+		/* CLOSE BUTTON */
+		.button.close { margin:1px 0px 0px 30px; }
+		.button:hover.close span { -webkit-transform:rotateZ(90deg); }
+		.button.close span { background-image:url("img/cross.gif"); }
+		
+		section { margin:20% auto; width:150px; }
+
+		</style>
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/clock.js"></script>
+		
+		<script type="text/javascript">
+		
+		$(function() {
+			
+			$('.button span').live('mouseover', function(event) { $(this).next().get(0).play(); });
+			
+			initCircle();
+			setInterval(function() {
+				s = s + 1;
+				if(s == 100) { s = 0; }
+				animation(tmp, s, 100);
+			}, 30);
+			
+		});
+		
+		</script>
+		
+	</head>
+	
+	<body>
+		
+		<section>
+			
+			<!--
+			<div id="round_loader">
+				
+				<div class="green clock">
+					<div class="display"></div>
+				
+					<div class="front left"></div>
+				
+					<div class="rotate left">
+						<div class="bg left"></div>
+					</div>
+				
+					<div class="rotate right">
+						<div class="bg right"></div>
+					</div>
+				</div>
+				
+			</div>
+			-->
+		
+			<a class="button prev" title="" href="#">
+				<span>Experiments</span>
+				<audio class="sound_player" preload>
+					<source type="audio/aac" src="sound/clack.mp3" /> 
+					<source type="audio/ogg; codecs=vorbis" src="sound/clack.ogg" /> 
+				</audio>
+			</a>
+		
+			<a class="button next" title="" href="#">
+				<span>Experiments</span>
+				<audio class="sound_player" preload>
+					<source type="audio/aac" src="sound/clack.mp3" /> 
+					<source type="audio/ogg; codecs=vorbis" src="sound/clack.ogg" /> 
+				</audio>
+			</a>
+			
+			<a class="button close" title="" href="#">
+				<span>Experiments</span>
+				<audio class="sound_player" preload>
+					<source type="audio/aac" src="sound/clack.mp3" /> 
+					<source type="audio/ogg; codecs=vorbis" src="sound/clack.ogg" /> 
+				</audio>
+			</a>
+			
+		</section>
+
+	</body>
+
+</html>
