@@ -6,6 +6,7 @@
 	position:relative;
 	overflow:hidden;
 	float:left;
+	color:white;
 }
 
 .clock .rotate {
